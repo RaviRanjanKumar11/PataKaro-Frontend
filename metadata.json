@@ -1,0 +1,5 @@
+{
+  "name": "PataKaro Finder",
+  "description": "A comprehensive utility app to find IFSC codes, PIN codes, IP info, weather, and more with a modern Material Design UI.",
+  "requestFramePermissions": ["geolocation"]
+}
