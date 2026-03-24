@@ -19,7 +19,7 @@ export const getIfscDetails = async (ifsc: string) => {
 // PIN Code Search
 export const getPinCodeDetails = async (pin: string) => {
   const response = await 
-  API.get("/pin", {
+  API.get("/pincode", {
     params: { pin }
   });
   return response.data;
