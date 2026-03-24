@@ -4,11 +4,19 @@ import axios from 'axios';
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 const API = axios.create({
-  baseURL: BASE_URL,
-    headers: {
-    "x-api-key":  localStorage.getItem("apiKey") || ""
-  }
+  baseURL: BASE_URL
 });
+
+API.interceptors.request.use((config) => {
+  const apiKey = localStorage.getItem("apiKey");
+
+  if (apiKey) {
+    config.headers["x-api-key"] = apiKey;
+  }
+
+  return config;
+});
+
 
 // IFSC Code Search
 export const getIfscDetails = async (ifsc: string) => {
