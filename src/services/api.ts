@@ -1,12 +1,16 @@
+
 import axios from 'axios';
+
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
 const API = axios.create({
-  baseURL: "http://localhost:5000/api"
+  baseURL: BASE_URL
 });
 
 // IFSC Code Search
 export const getIfscDetails = async (ifsc: string) => {
   const response = await 
-   API.get("ifsc}", {
+   API.get("/ifsc", {
     params: { ifsc }
   });
   return response.data;
@@ -15,7 +19,7 @@ export const getIfscDetails = async (ifsc: string) => {
 // PIN Code Search
 export const getPinCodeDetails = async (pin: string) => {
   const response = await 
-  API.get("pin}", {
+  API.get("/pin", {
     params: { pin }
   });
   return response.data;
@@ -23,8 +27,7 @@ export const getPinCodeDetails = async (pin: string) => {
 
 // IP Address Info
 export const getIpInfo = async (ip: string = '') => {
-  const url = ip ? `http://localhost:5000/api/ip?ip=${ip}` : `http://localhost:5000/api/ip`;
-  const response = await axios.get(url);
+  const response = await API.get("/ip", { params: ip ? { ip } : {} });
   return response.data;
 };
 
@@ -70,7 +73,7 @@ export const getCompanyDetails = async (cin: string) => {
 
 // QR Code Generator (goqr.me)
 export const getQrCodeUrl = (data: string) => {
-  return `http://localhost:5000/api/qr?data=${encodeURIComponent(data)}`;
+  return `${BASE_URL}/qr?data=${encodeURIComponent(data)}`;
 };
 
 // Barcode Lookup
