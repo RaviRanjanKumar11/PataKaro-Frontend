@@ -127,7 +127,7 @@ export interface UserProfile {
   createdAt: string;
 }
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://patakaro-backendnew.onrender.com";
 
 function ProfileView({ user, onLogout }: { user: UserProfile | null, onLogout: () => void, key?: string }) {
   if (!user) {
