@@ -2,7 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-
+import axios from 'axios';  
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
@@ -114,6 +114,37 @@ const handleShare = async (title: string, text: string, url?: string) => {
     navigator.clipboard.writeText(shareText);
   }
 };
+
+
+
+const API = axios.create({
+  baseURL: "https://patakaro-backendnew.onrender.com/api/",
+  withCredentials: true, // This ensures cookies are sent with every request
+});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        // 2. Use the instance to make the call
+        const res = await API.get("/me");
+
+        if (res.data?.apiKey) {
+          localStorage.setItem("apiKey", res.data.apiKey);
+        }
+      } catch (err) {
+        // It's helpful to see the actual error in the console during dev
+        console.error("User not logged in or API error:", err);
+      }
+    };
+
+    fetchUser();
+  }, []); // Empty dependency array means this runs once on mount
+
+
+
+
+
+
 
 export interface UserProfile {
   _id: string;
