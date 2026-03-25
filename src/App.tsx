@@ -117,29 +117,7 @@ const handleShare = async (title: string, text: string, url?: string) => {
 
 
 
-const API = axios.create({
-  baseURL: "https://patakaro-backendnew.onrender.com/api/",
-  withCredentials: true, // This ensures cookies are sent with every request
-});
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        // 2. Use the instance to make the call
-        const res = await API.get("/me");
-
-        if (res.data?.apiKey) {
-          localStorage.setItem("apiKey", res.data.apiKey);
-        }
-      } catch (err) {
-        // It's helpful to see the actual error in the console during dev
-        console.error("User not logged in or API error:", err);
-      }
-    };
-
-    fetchUser();
-  }, []); // Empty dependency array means this runs once on mount
-
+  
 
 
 
@@ -268,21 +246,31 @@ export default function App() {
   const { history, addToHistory, clearHistory } = useSearchHistory();
   const { addReminder } = useReminders();
 
-  useEffect(() => {
-    const checkUser = async () => {
+  
+const API = axios.create({
+  baseURL: "https://patakaro-backendnew.onrender.com/api/",
+  withCredentials: true, // This ensures cookies are sent with every request
+});
+
+
+ useEffect(() => {
+    const fetchUser = async () => {
       try {
-        // Fetch user from backend using session cookie
-        const res = await fetch(`${BACKEND_URL}/auth/current_user`, { credentials: 'include' });
-        if (res.ok) {
-          const data = await res.json();
-          setUser(data);
+        // 2. Use the instance to make the call
+        const res = await API.get("/me");
+
+        if (res.data?.apiKey) {
+          localStorage.setItem("apiKey", res.data.apiKey);
         }
       } catch (err) {
-        console.log("User not logged in");
+        // It's helpful to see the actual error in the console during dev
+        console.error("User not logged in or API error:", err);
       }
     };
-    checkUser();
-  }, []);
+
+    fetchUser();
+  }, []); // Empty dependency array means this runs once on mount
+
 
   useEffect(() => {
     if (isDarkMode) {
