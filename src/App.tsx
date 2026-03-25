@@ -302,7 +302,7 @@ const API = axios.create({
           <div className="w-10 h-10 bg-zinc-900 dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-zinc-900 shadow-xl shadow-zinc-900/10">
             <Search size={20} />
           </div>
-          <h1 className="font-bold text-xl tracking-tight">PataKaro</h1>
+          <h1 className="font-bold text-xl tracking-tight text-white">PataKaro</h1>
         </div>
 
         <nav className="flex-1 px-4 py-6 space-y-2">
@@ -454,12 +454,12 @@ function SidebarLink({ active, onClick, icon, label }: { active: boolean, onClic
     <button 
       onClick={onClick}
       className={cn(
-        "sidebar-link w-full",
+        "sidebar-link w-full text-white",
         active && "sidebar-link-active"
       )}
     >
       {icon}
-      <span>{label}</span>
+      <span class="text-white">{label}</span>
     </button>
   );
 }
@@ -513,7 +513,7 @@ function HomeView({ history, onSelectTab, clearHistory }: { history: any[], onSe
             <h2 className="text-5xl lg:text-6xl font-black mb-6 tracking-tight leading-tight">
               Pata <span className="text-yellow-300">Karo</span>
             </h2>
-            <p className="text-white/80 text-xl leading-relaxed">Access essential lookup tools, vehicle details, and utility services in one vibrant, unified interface.</p>
+            <p className="text-white text-xl leading-relaxed">Access essential lookup tools, vehicle details, and utility services in one vibrant, unified interface.</p>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
@@ -536,7 +536,7 @@ function HomeView({ history, onSelectTab, clearHistory }: { history: any[], onSe
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Distribution Chart */}
             <div className="card p-6 flex flex-col items-center">
-              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 self-start">Search Distribution</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4 self-start">Search Distribution</h4>
               <div className="h-50 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -563,7 +563,7 @@ function HomeView({ history, onSelectTab, clearHistory }: { history: any[], onSe
                 {chartData.map((entry, index) => (
                   <div key={entry.name} className="flex items-center gap-1.5">
                     <div className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS[index % COLORS.length] }} />
-                    <span className="text-[10px] font-bold text-gray-500">{entry.name}</span>
+                    <span className="text-[10px] font-bold text-white">{entry.name}</span>
                   </div>
                 ))}
               </div>
@@ -571,7 +571,7 @@ function HomeView({ history, onSelectTab, clearHistory }: { history: any[], onSe
 
             {/* Activity Chart */}
             <div className="card p-6">
-              <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Search Volume</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Search Volume</h4>
               <div className="h-50 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={chartData}>
@@ -613,7 +613,7 @@ function HomeView({ history, onSelectTab, clearHistory }: { history: any[], onSe
         </div>
         
         {history.length === 0 ? (
-          <div className="card p-12 text-center text-gray-400 border-dashed border-2">
+          <div className="card p-12 text-center text-white border-dashed border-2">
             <History size={48} className="mx-auto mb-4 opacity-10" />
             <p className="font-medium">Your search history is empty</p>
             <p className="text-xs mt-1">Start exploring tools to see activity here</p>
@@ -648,8 +648,8 @@ function HomeView({ history, onSelectTab, clearHistory }: { history: any[], onSe
                   <div>
                     <p className="font-bold text-sm group-hover:text-indigo-600 transition-colors">{item.query}</p>
                     <div className="flex items-center gap-2 mt-0.5">
-                      <span className="text-[10px] px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700 rounded-md font-bold text-gray-500 uppercase">{item.type}</span>
-                      <span className="text-[10px] text-gray-400">{format(item.timestamp, 'MMM d, h:mm a')}</span>
+                      <span className="text-[10px] px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700 rounded-md font-bold text-white uppercase">{item.type}</span>
+                      <span className="text-[10px] text-white">{format(item.timestamp, 'MMM d, h:mm a')}</span>
                     </div>
                   </div>
                 </div>
@@ -672,7 +672,7 @@ function QuickAction({ icon, label, onClick }: { icon: React.ReactNode, label: s
       <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
         {icon}
       </div>
-      <span>{label}</span>
+      <span className="text-white">{label}</span>
     </button>
   );
 }
@@ -711,7 +711,7 @@ function IfscView({ onSearch, onAddReminder }: { onSearch: (q: string) => void, 
     >
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">IFSC Finder</h2>
-        <p className="text-sm text-gray-500">Search for bank details using IFSC code</p>
+        <p className="text-sm text-white">Search for bank details using IFSC code</p>
       </div>
 
       <form onSubmit={handleSearch} className="relative">
@@ -760,7 +760,7 @@ function IfscView({ onSearch, onAddReminder }: { onSearch: (q: string) => void, 
               >
                 <Share2 size={16} />
               </button>
-              <button onClick={() => navigator.clipboard.writeText(JSON.stringify(result, null, 2))} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-500"><Copy size={16} /></button>
+              <button onClick={() => navigator.clipboard.writeText(JSON.stringify(result, null, 2))} className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-white"><Copy size={16} /></button>
             </div>
           </div>
           
@@ -772,7 +772,7 @@ function IfscView({ onSearch, onAddReminder }: { onSearch: (q: string) => void, 
           </div>
           
           <div>
-            <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Address</h3>
+            <h3 className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">Address</h3>
             <p className="text-sm text-gray-600 dark:text-gray-300">{result.ADDRESS}</p>
           </div>
 
@@ -855,7 +855,7 @@ function PinView({ onSearch, onAddReminder }: { onSearch: (q: string) => void, o
     >
       <div className="space-y-2">
         <h2 className="text-2xl font-bold">PIN Code Search</h2>
-        <p className="text-sm text-gray-500">Find post office details by PIN code</p>
+        <p className="text-sm text-white">Find post office details by PIN code</p>
       </div>
 
       <form onSubmit={handleSearch} className="relative">
@@ -893,7 +893,7 @@ function PinView({ onSearch, onAddReminder }: { onSearch: (q: string) => void, o
           )}
 
           <div className="space-y-4">
-            <p className="text-xs font-medium text-gray-400">{result.PostOffice.length} post offices found</p>
+            <p className="text-xs font-medium text-white">{result.PostOffice.length} post offices found</p>
             {result.PostOffice.map((po, idx) => (
               <motion.div 
                 key={idx}
@@ -1025,7 +1025,7 @@ function ToolCard({ icon, label, active, onClick }: { icon: React.ReactNode, lab
         active ? "border-indigo-600 bg-indigo-600/5 ring-1 ring-indigo-600" : "hover:bg-gray-50 dark:hover:bg-gray-800/50"
       )}
     >
-      <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-colors", active ? "bg-indigo-600 text-white" : "bg-gray-100 dark:bg-gray-700 text-gray-500")}>
+      <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-colors", active ? "bg-indigo-600 text-white" : "bg-gray-100 dark:bg-gray-700 text-white")}>
         {icon}
       </div>
       <span className="font-bold text-sm">{label}</span>
@@ -1079,7 +1079,7 @@ function IpTool({ onSearch }: { onSearch: (q: string) => void, key?: string }) {
               >
                 <Share2 size={16} />
               </button>
-              <span className="text-xs text-gray-400">{result.org}</span>
+              <span className="text-xs text-white">{result.org}</span>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
@@ -1223,10 +1223,10 @@ function WeatherTool({ onSearch }: { onSearch: (q: string) => void, key?: string
                 <Share2 size={18} />
               </button>
             </div>
-            <p className="text-gray-500 capitalize">{result.weather[0].description}</p>
+            <p className="text-white capitalize">{result.weather[0].description}</p>
             <div className="mt-4 grid grid-cols-2 gap-4">
-              <div className="text-xs"><span className="text-gray-400">Humidity:</span> {result.main.humidity}%</div>
-              <div className="text-xs"><span className="text-gray-400">Feels like:</span> {result.main.feels_like}°C</div>
+              <div className="text-xs"><span className="text-white">Humidity:</span> {result.main.humidity}%</div>
+              <div className="text-xs"><span className="text-white">Feels like:</span> {result.main.feels_like}°C</div>
             </div>
           </div>
           <div className="text-right">
@@ -1264,7 +1264,7 @@ function CurrencyTool({ onSearch }: { onSearch: (q: string) => void, key?: strin
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
       <div className="card p-6 space-y-6">
         <div className="space-y-2">
-          <label className="text-xs font-bold text-gray-400 uppercase">Amount (INR)</label>
+          <label className="text-xs font-bold text-white uppercase">Amount (INR)</label>
           <input 
             type="number" 
             value={amount}
@@ -1298,7 +1298,7 @@ function CurrencyTool({ onSearch }: { onSearch: (q: string) => void, key?: strin
 function CurrencyRow({ label, value, symbol }: { label: string, value: number, symbol: string }) {
   return (
     <div className="flex justify-between items-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800/50">
-      <span className="font-bold text-gray-500">{label}</span>
+      <span className="font-bold text-white">{label}</span>
       <span className="text-xl font-bold text-indigo-600">{symbol}{value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
     </div>
   );
@@ -1391,7 +1391,7 @@ function GstTool({ onSearch, onAddReminder }: { onSearch: (q: string) => void, o
             <InfoItem label="Jurisdiction" value={result.stj} />
           </div>
           <div>
-            <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Principal Address</h3>
+            <h3 className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">Principal Address</h3>
             <p className="text-sm text-gray-600 dark:text-gray-300">
               {result.pradr.addr.bno}, {result.pradr.addr.bnm}, {result.pradr.addr.st}, {result.pradr.addr.loc}, {result.pradr.addr.dst}, {result.pradr.addr.pncd}
             </p>
@@ -1490,7 +1490,7 @@ function CompanyTool({ onSearch, onAddReminder }: { onSearch: (q: string) => voi
             <InfoItem label="Paid-up Capital" value={result.paid_up_capital} />
           </div>
           <div>
-            <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Registered Address</h3>
+            <h3 className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">Registered Address</h3>
             <p className="text-sm text-gray-600 dark:text-gray-300">{result.registered_office_address}</p>
           </div>
 
@@ -1622,7 +1622,7 @@ function BarcodeTool({ onSearch }: { onSearch: (q: string) => void, key?: string
               <InfoItem label="Brand" value={product.brand} />
               <InfoItem label="Category" value={product.category} />
             </div>
-            <p className="text-xs text-gray-500 line-clamp-2">{product.description}</p>
+            <p className="text-xs text-white line-clamp-2">{product.description}</p>
           </div>
         </motion.div>
       ))}
@@ -1670,7 +1670,7 @@ function UrlTool({ onSearch }: { onSearch: (q: string) => void, key?: string }) 
       {shortened && (
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="card p-6 space-y-4">
           <div className="space-y-1">
-            <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Shortened URL</h3>
+            <h3 className="text-[10px] font-bold text-white uppercase tracking-widest">Shortened URL</h3>
             <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-xl border border-black/5 dark:border-white/5">
               <span className="font-bold text-indigo-600 truncate mr-4">{shortened}</span>
               <button 
@@ -1717,7 +1717,7 @@ function PasswordTool({ onSearch }: { onSearch: (q: string) => void, key?: strin
       <div className="card p-6 space-y-6">
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Password Length: {length}</h3>
+            <h3 className="text-[10px] font-bold text-white uppercase tracking-widest">Password Length: {length}</h3>
             <input 
               type="range" 
               min="8" 
@@ -2044,7 +2044,7 @@ function RandomUserTool({ onSearch }: { onSearch: (q: string) => void, key?: str
               <img src={user.picture.large} alt="User" className="w-24 h-24 rounded-full border-4 border-indigo-600/20 shadow-xl" referrerPolicy="no-referrer" />
               <div>
                 <h3 className="font-bold text-xl">{user.name.first} {user.name.last}</h3>
-                <p className="text-sm text-gray-500">{user.email}</p>
+                <p className="text-sm text-white">{user.email}</p>
               </div>
             </div>
             <button 
@@ -2245,7 +2245,7 @@ function RcTool({ onSearch, onAddReminder }: { onSearch: (q: string) => void, on
 function InfoItem({ label, value }: { label: string, value: string }) {
   return (
     <div>
-      <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">{label}</h3>
+      <h3 className="text-[10px] font-bold text-white uppercase tracking-widest mb-1">{label}</h3>
       <p className="text-sm font-bold truncate">{value || 'N/A'}</p>
     </div>
   );
@@ -2280,7 +2280,7 @@ function ReminderModal({ isOpen, onClose, onSave, initialTitle = '', initialDesc
 
         <div className="space-y-4">
           <div>
-            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1 block">Title</label>
+            <label className="text-[10px] font-bold text-white uppercase tracking-widest mb-1 block">Title</label>
             <input 
               type="text" 
               value={title}
@@ -2290,7 +2290,7 @@ function ReminderModal({ isOpen, onClose, onSave, initialTitle = '', initialDesc
             />
           </div>
           <div>
-            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1 block">Description</label>
+            <label className="text-[10px] font-bold text-white uppercase tracking-widest mb-1 block">Description</label>
             <textarea 
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
@@ -2299,7 +2299,7 @@ function ReminderModal({ isOpen, onClose, onSave, initialTitle = '', initialDesc
             />
           </div>
           <div>
-            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1 block">Date</label>
+            <label className="text-[10px] font-bold text-white uppercase tracking-widest mb-1 block">Date</label>
             <input 
               type="date" 
               value={date}
@@ -2341,7 +2341,7 @@ function RemindersView() {
       <div className="flex justify-between items-end">
         <div className="space-y-2">
           <h2 className="text-2xl font-bold">Reminders</h2>
-          <p className="text-sm text-gray-500">Manage your important tasks and follow-ups</p>
+          <p className="text-sm text-white">Manage your important tasks and follow-ups</p>
         </div>
         {reminders.length > 0 && (
           <button 
@@ -2356,7 +2356,7 @@ function RemindersView() {
 
       {reminders.length === 0 ? (
         <div className="card p-12 flex flex-col items-center text-center gap-4 opacity-50">
-          <div className="w-16 h-16 bg-gray-100 dark:bg-zinc-800 rounded-2xl flex items-center justify-center text-gray-400">
+          <div className="w-16 h-16 bg-gray-100 dark:bg-zinc-800 rounded-2xl flex items-center justify-center text-white">
             <Bell size={32} />
           </div>
           <div>
@@ -2381,16 +2381,16 @@ function RemindersView() {
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">{reminder.type}</span>
-                    <span className="text-[10px] font-bold text-gray-400">•</span>
-                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{reminder.date}</span>
+                    <span className="text-[10px] font-bold text-white">•</span>
+                    <span className="text-[10px] font-bold text-white uppercase tracking-widest">{reminder.date}</span>
                   </div>
                   <h3 className="font-bold text-lg leading-tight mb-1">{reminder.title}</h3>
-                  <p className="text-sm text-gray-500 line-clamp-2">{reminder.description}</p>
+                  <p className="text-sm text-white line-clamp-2">{reminder.description}</p>
                 </div>
               </div>
               <button 
                 onClick={() => removeReminder(reminder.id)}
-                className="p-2 rounded-lg hover:bg-error/10 text-gray-400 hover:text-error transition-colors"
+                className="p-2 rounded-lg hover:bg-error/10 text-white hover:text-error transition-colors"
               >
                 <Trash2 size={18} />
               </button>
