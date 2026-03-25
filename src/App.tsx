@@ -245,6 +245,7 @@ export default function App() {
   const [user, setUser] = useState<UserProfile | null>(null);
   const { history, addToHistory, clearHistory } = useSearchHistory();
   const { addReminder } = useReminders();
+  const [userData,setUserData] = useState<UserProfile | null>(null);
 
   
 const API = axios.create({
@@ -258,6 +259,9 @@ const API = axios.create({
       try {
         // 2. Use the instance to make the call
         const res = await API.get("/me");
+
+        // 3. Set the user state
+        setUserData(res || res.data);
 
         if (res.data?.apiKey) {
           localStorage.setItem("apiKey", res.data.apiKey);
@@ -280,15 +284,23 @@ const API = axios.create({
     }
   }, [isDarkMode]);
 
-  const handleLogout = async () => {
-    try {
-      await fetch(`${BACKEND_URL}/auth/logout`, { credentials: 'include' });
-      setUser(null);
-      setActiveTab('home');
-    } catch (err) {
-      console.error('Error signing out:', err);
-    }
-  };
+ const handleLogout = async () => {
+  try {
+
+    await API.get("/auth/logout", {
+      withCredentials: true
+    });
+
+    localStorage.removeItem("apiKey");
+
+    setUser(null);
+
+    window.location.reload();
+
+  } catch (err) {
+    console.error("Logout error", err);
+  }
+};
 
   return (
     <div className="min-h-screen bg-background dark:bg-zinc-950 flex">
@@ -402,21 +414,31 @@ const API = axios.create({
             >
               {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            {user ? (
-              <button 
-                onClick={() => setActiveTab('profile')}
-                className="w-10 h-10 rounded-full border-2 border-indigo-600/20 overflow-hidden hover:border-indigo-600 transition-all"
-              >
-                <img src={user.image || ''} alt="User" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-              </button>
-            ) : (
-              <button 
-                onClick={() => setActiveTab('profile')}
-                className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500 hover:text-indigo-600 transition-colors"
-              >
-                <User size={20} />
-              </button>
-            )}
+           
+{userData ? (
+  <div className="flex items-center gap-3">
+    
+    <span className="text-sm font-medium">
+      {userData.name}
+    </span>
+
+    <button
+      onClick={() => setActiveTab("profile")}
+      className="w-10 h-10 rounded-full border-2 border-indigo-600/20 overflow-hidden hover:border-indigo-600 transition-all"
+    >
+      
+    </button>
+
+  </div>
+) : (
+  <button
+    onClick={() => setActiveTab("profile")}
+    className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500 hover:text-indigo-600 transition-colors"
+  >
+    <User size={20} />
+  </button>
+)}
+
           </div>
         </header>
 
@@ -428,6 +450,7 @@ const API = axios.create({
             {activeTab === 'pin' && <PinView key="pin" onSearch={(q) => addToHistory('PIN', q)} onAddReminder={addReminder} />}
             {activeTab === 'tools' && <ToolsView key="tools" onSearch={(t, q) => addToHistory(t, q)} onAddReminder={addReminder} />}
             {activeTab === 'reminders' && <RemindersView key="reminders" />}
+            
             {activeTab === 'profile' && <ProfileView key="profile" user={user} onLogout={handleLogout} />}
           </AnimatePresence>
         </main>
