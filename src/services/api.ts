@@ -1,28 +1,7 @@
 
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
-
-
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await API.get("/me", { withCredentials: true });
-
-        localStorage.setItem("apiKey", res.data.apiKey);
-
-        console.log("API KEY:", res.data.apiKey);
-      } catch (error) {
-        console.log("User not logged in");
-      }
-    };
-
-    fetchUser();
-  }, []);
-
-
 
 const API = axios.create({
   baseURL: BASE_URL
