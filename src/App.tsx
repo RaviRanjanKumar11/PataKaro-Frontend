@@ -301,11 +301,11 @@ const API = axios.create({
     <div className="min-h-screen bg-background dark:bg-zinc-950 flex">
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex flex-col w-72 border-r border-border dark:border-white/10 bg-white dark:bg-zinc-900 sticky top-0 h-screen z-40">
-        <div className="p-6 flex items-center gap-3">
+        <div className="p-3 flex items-center gap-3">
           <img
             src={new URL('./images/pataKaroLgo.png', import.meta.url).href}
             alt="PataKaro Logo"
-            className="w-10 h-10 rounded-xl shadow-xl shadow-zinc-900/10" 
+            className="w-20 h-20 rounded-xl shadow-xl shadow-zinc-900/10" 
           />
           <h1 className="font-bold text-xl tracking-tight text-white">PataKaro</h1>
         </div>
@@ -355,12 +355,12 @@ const API = axios.create({
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="fixed inset-y-0 left-0 w-72 bg-white dark:bg-zinc-900 z-50 lg:hidden border-r border-border dark:border-white/10 shadow-2xl"
             >
-              <div className="p-6 flex items-center justify-between">
+              <div className="p-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <img
                     src={new URL('./images/pataKaroLgo.png', import.meta.url).href}
                     alt="PataKaro Logo"
-                    className="w-10 h-10 rounded-xl shadow-xl shadow-zinc-900/10"
+                    className="w-20 h-20 rounded-xl shadow-xl shadow-zinc-900/10"
                   />
                   <h1 className="font-bold text-xl tracking-tight">PataKaro</h1>
                 </div>
