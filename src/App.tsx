@@ -303,9 +303,9 @@ const API = axios.create({
       <aside className="hidden lg:flex flex-col w-72 border-r border-border dark:border-white/10 bg-white dark:bg-zinc-900 sticky top-0 h-screen z-40">
         <div className="p-6 flex items-center gap-3">
           <img
-            src="./images/Gemini_Generated_Image_f0uxnkf0uxnkf0ux.png"
+            src={new URL('./images/Gemini_Generated_Image_f0uxnkf0uxnkf0ux.png', import.meta.url).href}
             alt="PataKaro Logo"
-            className="w-10 h-10 rounded-xl shadow-xl shadow-zinc-900/10"
+            className="w-10 h-10 rounded-xl shadow-xl shadow-zinc-900/10" 
           />
           <h1 className="font-bold text-xl tracking-tight text-white">PataKaro</h1>
         </div>
@@ -358,7 +358,7 @@ const API = axios.create({
               <div className="p-6 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <img
-                    src="./images/Gemini_Generated_Image_f0uxnkf0uxnkf0ux.png"
+                    src={new URL('./images/Gemini_Generated_Image_f0uxnkf0uxnkf0ux.png', import.meta.url).href}
                     alt="PataKaro Logo"
                     className="w-10 h-10 rounded-xl shadow-xl shadow-zinc-900/10"
                   />
