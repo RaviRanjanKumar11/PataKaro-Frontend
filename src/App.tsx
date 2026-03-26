@@ -302,9 +302,11 @@ const API = axios.create({
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex flex-col w-72 border-r border-border dark:border-white/10 bg-white dark:bg-zinc-900 sticky top-0 h-screen z-40">
         <div className="p-6 flex items-center gap-3">
-          <div className="w-10 h-10 bg-zinc-900 dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-zinc-900 shadow-xl shadow-zinc-900/10">
-            <Search size={20} />
-          </div>
+          <img
+            src="./images/Gemini_Generated_Image_f0uxnkf0uxnkf0ux.png"
+            alt="PataKaro Logo"
+            className="w-10 h-10 rounded-xl shadow-xl shadow-zinc-900/10"
+          />
           <h1 className="font-bold text-xl tracking-tight text-white">PataKaro</h1>
         </div>
 
@@ -355,9 +357,11 @@ const API = axios.create({
             >
               <div className="p-6 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-zinc-900 dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-zinc-900">
-                    <Search size={20} />
-                  </div>
+                  <img
+                    src="./images/Gemini_Generated_Image_f0uxnkf0uxnkf0ux.png"
+                    alt="PataKaro Logo"
+                    className="w-10 h-10 rounded-xl shadow-xl shadow-zinc-900/10"
+                  />
                   <h1 className="font-bold text-xl tracking-tight">PataKaro</h1>
                 </div>
               </div>
