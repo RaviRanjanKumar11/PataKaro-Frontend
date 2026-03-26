@@ -2,7 +2,6 @@
 import axios from 'axios';
 
 const BASE_URL = "https://patakaro-backendnew.onrender.com/api/";
-// const BASE_URL = process.env.NODE_ENV === "production" ? "https://patakaro-backendnew.onrender.com/api" : "http://localhost:5000/api";
 
 
 const API = axios.create({

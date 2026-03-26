@@ -305,9 +305,9 @@ const API = axios.create({
           <img
             src={new URL('./images/pataKaroLgo.png', import.meta.url).href}
             alt="PataKaro Logo"
-            className="w-20 h-20 rounded-xl shadow-xl shadow-zinc-900/10" 
+            className="w-24 h-16" 
           />
-          <h1 className="font-bold text-xl tracking-tight text-white">PataKaro</h1>
+        
         </div>
 
         <nav className="flex-1 px-4 py-6 space-y-2">
