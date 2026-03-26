@@ -12,8 +12,10 @@ const API = axios.create({
 API.interceptors.request.use((config) => {
   const apiKey = localStorage.getItem("apiKey");
 
-  if (apiKey) {
+  if (apiKey && apiKey !== "undefined" && apiKey !== "null") {
     config.headers["x-api-key"] = apiKey;
+  } else {
+    delete (config.headers as any)["x-api-key"];
   }
 
   return config;

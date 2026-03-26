@@ -257,18 +257,19 @@ const API = axios.create({
  useEffect(() => {
     const fetchUser = async () => {
       try {
-        // 2. Use the instance to make the call
         const res = await API.get("/me");
 
-        // 3. Set the user state
-        setUserData(res || res.data);
+        setUserData(res.data);
 
         if (res.data?.apiKey) {
           localStorage.setItem("apiKey", res.data.apiKey);
+        } else {
+          localStorage.removeItem("apiKey");
         }
       } catch (err) {
-        // It's helpful to see the actual error in the console during dev
         console.error("User not logged in or API error:", err);
+        setUserData(null);
+        localStorage.removeItem("apiKey");
       }
     };
 
@@ -288,6 +289,8 @@ const API = axios.create({
     try {
       await fetch(`${BACKEND_URL}/auth/logout`, { credentials: 'include' });
       setUser(null);
+      setUserData(null);
+      localStorage.removeItem("apiKey");
       setActiveTab('home');
     } catch (err) {
       console.error('Error signing out:', err);
